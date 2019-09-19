@@ -1,0 +1,28 @@
+<%= form_with model: @article, html: {class: "blog-article-form"}, local: true do |form| %>
+
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@article.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @article.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-item">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+  <div class="form-item">
+    <%= form.label :text %>
+    <%= form.text_area :text,size: "60x4" %>
+  </div>
+
+  <%= form.submit class: "blog-button btn-primary" %>
+
+<% end %>

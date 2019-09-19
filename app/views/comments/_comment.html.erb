@@ -1,0 +1,15 @@
+<div class="blog-comment-list">
+  <% @article.comments.each do |comment| %>
+    <div class="blog-comment-item">
+      <div class="comment-head"><%= comment.updated_at.localtime.to_s(:db) %></div>
+      <div class="comment-body">
+        <span class="commenter"><%= comment.commenter %> : </span>
+        <span class="body"><%= comment.body %></span>
+        <%= link_to '删除', [comment.article, comment],
+                    class: "action",
+                    method: :delete,
+                    data: {confirm: 'Are you sure?'} %>
+      </div>
+    </div>
+  <% end %>
+</div>

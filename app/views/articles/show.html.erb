@@ -1,0 +1,17 @@
+<!--文章-->
+<div class="blog-article-detail">
+  <div class="comment-head">时间: <%= @article.updated_at.localtime.to_s(:db) %></div>
+  <div class="commenter">标题: <%= @article.title %></div>
+  <div class="body">文章: <%= @article.text %></div>
+</div>
+
+<% if @article.comments.blank? === false %>
+  <div class="blog-title">评论</div>
+  <%= render 'comments/comment' %>
+<% end %>
+
+<div class="blog-title">添加评论:</div>
+<%= render 'comments/form' %>
+
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to 'Back', articles_path %>
